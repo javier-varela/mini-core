@@ -1,0 +1,20 @@
+{
+	"/": [
+		"src/routes/+page.ts"
+	],
+	"/api/departamentos": [
+		"src/routes/api/departamentos/+server.ts"
+	],
+	"/api/empleados": [
+		"src/routes/api/empleados/+server.ts"
+	],
+	"/api/gastos": [
+		"src/routes/api/gastos/+server.ts"
+	],
+	"/api/gastos/get-max-date": [
+		"src/routes/api/gastos/get-max-date/+server.ts"
+	],
+	"/api/gastos/get-min-date": [
+		"src/routes/api/gastos/get-min-date/+server.ts"
+	]
+}
