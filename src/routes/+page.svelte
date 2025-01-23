@@ -48,9 +48,7 @@
 			const params = new URLSearchParams(page.url.search);
 			params.set('date_from', this.#date_from);
 			params.set('date_to', this.#date_to);
-			goto(`${page.url.pathname}?${params.toString()}`).then(() => {
-				loading = false;
-			});
+			goto(`${page.url.pathname}?${params.toString()}`).then(() => (loading = false));
 		}
 	}
 
