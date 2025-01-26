@@ -2,7 +2,7 @@ import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ locals: { supabase: sb } }) => {
 	const { data, error, status } = await sb
-		.from('Gastos')
+		.from('gastos')
 		.select('created_at')
 		.order('created_at', { ascending: false })
 		.limit(1); // Opcional, trae solo el menor registro

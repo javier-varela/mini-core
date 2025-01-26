@@ -4,7 +4,7 @@ export const GET: RequestHandler = async ({ locals: { supabase: sb }, url }) => 
 	const date_start = url.searchParams.get('date_from');
 	const date_end = url.searchParams.get('date_to');
 
-	const query = sb.from('Gastos').select('*');
+	const query = sb.from('gastos').select(`*,empleados(nombre,apellido), departamentos(nombre)`);
 
 	if (date_start) query.gte('created_at', date_start);
 	if (date_end) query.lte('created_at', date_end);

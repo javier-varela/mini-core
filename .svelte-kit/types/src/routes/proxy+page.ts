@@ -7,8 +7,6 @@ export const load = async ({ fetch, url }: Parameters<PageLoad>[0]) => {
 	let date_from = url.searchParams.get('date_from') || '';
 	let date_to = url.searchParams.get('date_to') || '';
 
-	console.log(date_from);
-
 	if (!date_from) {
 		const date_from_res = await fetch('/api/gastos/get-min-date');
 		date_from = await date_from_res.json();
@@ -24,8 +22,6 @@ export const load = async ({ fetch, url }: Parameters<PageLoad>[0]) => {
 
 	const apiUrl = '/api/gastos?' + params;
 
-	console.log(apiUrl);
-
 	const gastos_response = await fetch(apiUrl, {
 		method: 'GET'
 	});
@@ -34,6 +30,7 @@ export const load = async ({ fetch, url }: Parameters<PageLoad>[0]) => {
 		const error = await gastos_response.json();
 		throw new Error(error.message || 'Failed to fetch gastos');
 	}
+
 	return {
 		gastos: await gastos_response.json(),
 		date_to,

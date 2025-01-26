@@ -1,12 +1,14 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import DatePickers from '$lib/components/DatePickers.svelte';
-	import { goto, invalidate, pushState, replaceState } from '$app/navigation';
+	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { onMount, tick } from 'svelte';
 
 	let { data }: { data: PageData } = $props();
 	let loading: boolean = $state(false);
+
+	$inspect(data.gastos);
 
 	// Clase DateParams mejorada
 	class DateParams {
@@ -72,6 +74,8 @@
 					<th>Fecha</th>
 					<th>Monto</th>
 					<th>Descripción</th>
+					<th>Empleado</th>
+					<th>Departamento</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -81,6 +85,8 @@
 						<td>{gasto.created_at}</td>
 						<td>{gasto.monto}</td>
 						<td>{gasto.descripcion}</td>
+						<td>{gasto.empleados.nombre + ' ' + gasto.empleados.apellido}</td>
+						<td>{gasto.departamentos.nombre}</td>
 					</tr>
 				{/each}
 			</tbody>
